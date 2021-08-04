@@ -32,7 +32,7 @@ if(isset($_POST['sms'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trigger</title>
+    <title>Send a Sms</title>
     <style>
         .container {
             margin: 0 auto;

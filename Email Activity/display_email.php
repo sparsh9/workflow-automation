@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
 
     </table>
     <br/>
-    <h3><a href="../index.php">Return to Create CRM Activity</a></h3>
+    <h3><a href="./email_activity.php">Return to Email Activity</a></h3>
 
 </div>
 </body>

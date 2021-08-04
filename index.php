@@ -11,7 +11,7 @@
 
 <br/>
 
-<h2><a href="Email Activity/email_activity.php">2. Send email to me</a></h2>
+<h2><a href="Email Activity/email_activity.php">2. Send Email</a></h2>
 
 </body>
 </html>
