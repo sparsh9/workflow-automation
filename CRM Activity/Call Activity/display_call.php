@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
 </head>
 <body>
 <div class="container">
-    <h4>Call Trigger</h4>
+    <h4>View Call Activity</h4>
     <?php if($error) { ?>
 
         <p class="error"><?php echo $error; ?></p>

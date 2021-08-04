@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
 </head>
 <body>
 <div class="container">
-    <h4>Appointment Trigger</h4>
+    <h4>View Appointment Activity</h4>
     <?php if($error) { ?>
 
         <p class="error"><?php echo $error; ?></p>

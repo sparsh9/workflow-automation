@@ -15,7 +15,7 @@ if ($result->num_rows > 0) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sms Trigger</title>
+    <title>View Sms Activity</title>
     <style>
         .container {
             margin: 0 auto;

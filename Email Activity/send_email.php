@@ -73,7 +73,7 @@ if(isset($_POST['email'])){
         </p>
         <p>
             Body:<br>
-            <input type="text" placeholder='Body' name="body" value="<?php echo $body; ?>" required >
+            <input type="Triggertext" placeholder='Body' name="body" value="<?php echo $body; ?>" required >
         </p>
         <p>
             <input type="submit" value="Send Email" name='email'>
