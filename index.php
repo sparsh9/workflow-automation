@@ -12,6 +12,7 @@
 <br/>
 
 <h2><a href="Email Activity/email_activity.php">2. Send Email</a></h2>
-
+<br/>
+<h2><a href="Set%20Triggers/set_trigger.php">3. Set Triggers</a></h2>
 </body>
 </html>
