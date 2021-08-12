@@ -50,11 +50,11 @@ $call_received_duration = $_POST['call_received_duration'];
 $appointment_scheduled_email= $_POST['appointment_scheduled_email'];
 $appointment_scheduled_date= $_POST['appointment_scheduled_date'];
 
-
 if(isset($_POST['trigger'])){
     if($trigger == 'sms_trigger') {
-        if ($action[0] == 'sms_sent') {
-
+        if ($action[0] == 'sms_sent' && !$action[1]) {
+//            echo($action[0]);
+//            echo($action[1]);
             $sql = "INSERT INTO `sms_trigger`(`sms_trigger`, `sms_action`, `sms_from`, `sms_to`, `sms_date`) 
 VALUES ('$trigger', '$action[0]', '$sms_sent_from', '$sms_sent_to', '$sms_sent_date') ";
 
@@ -68,7 +68,7 @@ VALUES ('$trigger', '$action[0]', '$sms_sent_from', '$sms_sent_to', '$sms_sent_d
             mysqli_close($conn);
         }
 
-        else if ($action[0] == 'sms_received') {
+        else if ($action[0] == 'sms_received' && !$action[1]) {
 
             $sql = "INSERT INTO `sms_trigger`(`sms_trigger`, `sms_action`, `sms_from`, `sms_to`, `sms_date`) 
 VALUES ('$trigger', '$action[0]', '$sms_received_from', '$sms_received_to', '$sms_received_date') ";
@@ -85,13 +85,12 @@ VALUES ('$trigger', '$action[0]', '$sms_received_from', '$sms_received_to', '$sm
 
         else if ($action[0] == 'sms_sent' && $action[1] == 'sms_received' || $action[1] == 'sms_sent' && $action[0] == 'sms_received' ) {
 
-            $sql = "INSERT INTO `sms_trigger`(`sms_trigger`, `sms_action`, `sms_from`, `sms_to`, `sms_date`) 
-VALUES ('$trigger', 'sms_sent', '$sms_sent_from', '$sms_sent_to', '$sms_sent_date') ";
+            $sql = "INSERT INTO sms_trigger(sms_trigger, sms_action, sms_from, sms_to, sms_date) 
+VALUES ('$trigger', 'sms_received', '$sms_received_from', '$sms_received_to', '$sms_received_date'),
+       ('$trigger', 'sms_sent', '$sms_sent_from', '$sms_sent_to', '$sms_sent_date') ";
 
-            $sql .= "INSERT INTO `sms_trigger`(`sms_trigger`, `sms_action`, `sms_from`, `sms_to`, `sms_date`) 
-VALUES ('$trigger', 'sms_received', '$sms_received_from', '$sms_received_to', '$sms_received_date') ";
 
-            if ($conn->mysqli_multi_query($sql) === TRUE) {
+            if ($conn->multi_query($sql) === TRUE) {
                 echo json_encode(array("statusCode"=>200));
             }
             else {
@@ -106,7 +105,7 @@ VALUES ('$trigger', 'sms_received', '$sms_received_from', '$sms_received_to', '$
     }
 
     if($trigger == 'call_trigger') {
-        if ($action[0] == 'call_made') {
+        if ($action[0] == 'call_made' && !$action[1] ) {
 
             $sql = "INSERT INTO `call_trigger`(`call_trigger`, `call_action`, `call_from`, `call_to`, `call_date`, `call_duration`) 
 VALUES ('$trigger', '$action[0]', '$call_made_from', '$call_made_to', '$call_made_date', '$call_made_duration') ";
@@ -121,7 +120,7 @@ VALUES ('$trigger', '$action[0]', '$call_made_from', '$call_made_to', '$call_mad
             mysqli_close($conn);
         }
 
-        else if ($action[0] == 'call_received') {
+        else if ($action[0] == 'call_received' && !$action[1]) {
 
             $sql = "INSERT INTO `call_trigger`(`call_trigger`, `call_action`, `call_from`, `call_to`, `call_date`, `call_duration`) 
 VALUES ('$trigger', '$action[0]', '$call_received_from', '$call_received_to', '$call_received_date', '$call_received_duration') ";
@@ -180,9 +179,6 @@ VALUES ('$trigger', '$action[0]', '$appointment_scheduled_email', '$appointment_
 
 
 }
-
-
-
 
 ?>
 
